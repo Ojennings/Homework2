@@ -1,0 +1,175 @@
+
+	1. What makes SQL a nonprocedural language?
+SQL is a language that tells things what should be done and not procedurally how things 
+should be done. There are no loops and conditional statements that are in most procedural
+languages.
+
+	2.  How can you tell whether a database is truly relational?
+A relational database presents the information in tables of rows and columns.
+a table is what is referred to as a relation, in that it has a collection of objects
+of the same type in the rows. A relational table would follow rules to maintain integrity 
+all rows in the table are distinct, duplicate rows cause problems when searching and 
+solving problems.
+
+	3.  What can you do with SQL?
+SQL is used as a front end to databases usually talks to a database server.  This can be 
+used from the command line, this interfaces with many different programming languages for 
+database management. Search, modify, create database and database elements.
+
+	4. Name the process that separates data into distinct, unique sets.
+Normalization reduces complexity of the structure of the previous level and reduces the 
+amount of repetition
+
+	5.  Do the following statements return the same or different output:
+
+SELECT * FROM ARRESTS; select * from arrests;
+	No SQL is case-insensitive, however just need to be aware of the capitalization when 
+dealing with data
+
+	6. None of the following queries work. Why not?
+
+select *;   //the From clause is missing it is  mandatory component of a select statement
+Select * from checks // the semicolon ";" that identifies the end of a statement
+ Select amount name payee FROM checks;//  a comma is needed between each column 
+ //select amount, name, payee FROM checks;
+
+Which of the following SQL statements will work?
+
+select * from checks; 
+select * from checks; 
+select * from checks 
+	All three of these sql statements work
+
+
+
+Do the following:
+
+   	1. Write a query to return just the check officerId and the topCharge.
+   			SELECT officerID,  topCharge FROM officerID;
+
+	2. Rewrite the query from exercise 1 so that the topCharge will appear as the first column in your query results.
+		SELECT topCharge, topCharge FROM officerID;
+
+    3. Using the arrests table, write a query to return all the unique topCharges.
+    	SELECT DISTINCT topCharges FROM arrests;
+    	
+    	
+    	
+
+    1. Write a query that returns everyone in the database whose last name begins with M.
+    	SELECT * FROM doubleAgents where LASTNAME like'M%';
+    2. Write a query that returns everyone who lives in Illinois with a first name of AL.
+    	SELECT * FROM doubleAgents
+    	WHERE STATE = 'IL'
+    	AND FIRSTNAME = 'AL';
+    	
+    3. What shorthand could you use instead of WHERE a >= 10 AND a <=30?
+    	WHERE a BETWEEN 10 and 30;
+
+    4.  What will this query return?
+
+    SELECT FIRSTNAME 
+    FROM DOUBLE_AGENTS 
+    WHERE FIRSTNAME = 'AL' 
+    AND LASTNAME = 'BULHER';
+	
+		Nothing no such element in the table that meets these conditions.
+		
+	5.Using the DOUBLEAGENTS table, write a query that returns the following:
+	 SELECT (FIRSTNAME || 'FROM') NAME, STATE
+	FROM FRIENDS
+	WHERE STATE = 'IL'
+	AND
+	LASTNAME = 'BUNDY'
+	
+	1.  Using the DOUBLEAGENTS table, write a query that returns the following:
+				 SELECT LASTNAME ||  ',' || FIRSTNAME NAME, 
+				AREA CODE || '-' || PHONE PHONE
+				FROM DOUBLEAGENTS
+				WHERE AREACODE BETWEEN 300 AND 350;
+				
+				
+	
+   	1.  Which function capitalizes the first letter of a character string and makes the 
+   		rest lowercase?
+		INITCAP
+   	
+    2.  Which functions are also known by the same name?
+    	aggregate and group functions are the same thing
+
+    3.  Will this query work?
+
+      SELECT COUNT(LASTNAME) FROM CHARACTERS;
+	Yes however it will only return the total of rows 
+
+    4.  How about this one?
+
+      SELECT SUM(LASTNAME) FROM CHARACTERS
+      No, LASTNAME is a character field.
+
+    5.  Assuming that they are separate columns, which function(s) would splice together
+     FIRSTNAME and LASTNAME?
+    '||' symbol
+    
+    6.  What does the answer 37 mean from the following SELECT?
+
+      SELECT COUNT(*) FROM drone_strikes;
+      the number of records in the table drone_strikes
+
+    7.   Will the following statement work? (Hint: look up substr)
+
+	 SELECT SUBSTR LASTNAME,1,5 FROM NAME_TBL;
+	 
+	 looks like i should make a table like
+	  SELECT SUBSTR (LASTNAME, 1,5) NAME FROM NAME_TBL;
+	 
+	 
+	 
+
+    1.  Using a table called SHOOTSTATS table, write a query to determine who is are on 
+    target less than .25.
+		SELECT NAME FROM SHOOTSTATS
+		WHERE (HITS/AB) < .25;
+
+    2.  Using today's OFFICERS table, write a query that will return the following:
+    SELECT 	substr (FIRST, 1, 1) || '_' ||
+    		substr (MIDDLE, 1, 1) ||'_' ||
+    		substr (LAST, 1,1) ||'_' || INITIALS, CODE
+    		FROM OFFICERS
+    		WHERE CODE = 32
+    		
+    		
+
+
+
+    1.  Which clause works just like LIKE(%)? (HINT: Look it up on google.)
+   			STARTING WITH
+
+    2.  What is the function of the GROUP BY clause, and what other clause does it act like?
+   		The GROUP BY clause groups data result sets that have been manipulated by various
+   		 functions.  the group by clause acts like the order ORDER BY clause in that it 
+   		 orders the results	of the query in the order of the columns are listed in the GROUP BY
+
+  	3.  Will this SELECT work?
+
+     NAME, AVG(SALARY), 
+     DEPARTMENT FROM PAY_TBL WHERE DEPARTMENT = 'SWAT' 
+     ORDER BY NAME 
+     GROUP BY DEPARTMENT, SALARY;
+     
+     No. GROUP BY Should be stated before ORDER BY.
+
+    4.  When using the HAVING clause, do you always have to use a GROUP BY also?
+   	Yes
+
+    5.  Can you use ORDER BY on a column that is not one of the columns in the SELECT 
+   statement?
+   	yes a select statement is not needed on a column that has an order by 
+
+    6.  Using the ORGCHART table from the following examples, find out how many people on 
+   each team have 30 or more days of sick leave.
+
+
+
+
+
